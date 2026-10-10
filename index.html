@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Dafanda Abdullah | Web Developer, IoT Engineer & Executive Leader</title>
+    
+    <!-- Google Fonts & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#E9EEEB',
+                        darker: '#DFE6E2',
+                        cardBg: 'rgba(255, 255, 255, 0.82)',
+                        cyber: '#286B59',
+                        cyberDark: '#1D5145',
+                        gold: '#B76443',
+                        goldDark: '#87452F',
+                        neonGreen: '#66844E',
+                        accentRed: '#BB5749',
+                        waGreen: '#297A54'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --split: 50%;
+            --color-ink: #202923;
+            --color-body: #4d5851;
+            --color-muted: #68716b;
+            --color-subtle: #7e867f;
+            --color-cyber: #286b59;
+            --color-gold: #b76443;
+            --color-neon-green: #66844e;
+            --color-wa: #297a54;
+            --color-cyber-light: #83c4b0;
+            --color-gold-light: #e1a084;
+            --color-neon-green-light: #b0ca91;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #e9eeeb;
+            color: var(--color-ink);
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Editorial split-screen hero */
+        #hero-split-container {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            overflow: hidden;
+            background: #e9eeeb;
+        }
+
+        .hero-panel {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Left Side: technology and research */
+        .panel-tech {
+            background: 
+                radial-gradient(circle at 22% 38%, rgba(40, 107, 89, 0.14) 0%, transparent 56%),
+                radial-gradient(circle at 12% 86%, rgba(40, 107, 89, 0.09) 0%, transparent 45%),
+                #e9eeeb;
+            z-index: 2;
+            clip-path: polygon(0 0, var(--split) 0, var(--split) 100%, 0 100%);
+        }
+
+        /* Right Side: leadership and community */
+        .panel-leadership {
+            background: 
+                radial-gradient(circle at 80% 35%, rgba(40, 107, 89, 0.11) 0%, transparent 58%),
+                radial-gradient(circle at 88% 82%, rgba(183, 100, 67, 0.08) 0%, transparent 48%),
+                #e9eeeb;
+            z-index: 1;
+        }
+
+        .cyber-grid-bg {
+            background-image:
+                linear-gradient(rgba(40, 107, 89, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(40, 107, 89, 0.035) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .stage-spotlight-bg {
+            background-image:
+                radial-gradient(ellipse at 78% 8%, rgba(40, 107, 89, 0.08) 0%, transparent 58%),
+                linear-gradient(rgba(40, 107, 89, 0.025) 1px, transparent 1px);
+            background-size: 100% 100%, 44px 44px;
+        }
+
+        /* Interactive split divider */
+        .split-divider-line {
+            position: absolute;
+            top: 0; 
+            bottom: 0;
+            left: var(--split);
+            width: 4px;
+            background: linear-gradient(to bottom, #286B59 0%, #e9eeeb 50%, #B76443 100%);
+            transform: translateX(-50%);
+            z-index: 30;
+            box-shadow: 0 0 12px rgba(40, 107, 89, 0.35), 0 0 18px rgba(183, 100, 67, 0.25);
+            cursor: col-resize;
+        }
+
+        .divider-handle {
+            position: absolute;
+            top: calc(50% + 28px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.94);
+            border: 2px solid #ffffff;
+            box-shadow: 0 5px 24px rgba(34, 47, 39, 0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: grab;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .divider-handle:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 7px 28px rgba(34, 47, 39, 0.24);
+        }
+
+        /* Center Photo Container */
+        .stage-photo-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(calc(-50% + 8px));
+            height: 80vh;
+            width: 100%;
+            max-width: 600px;
+            pointer-events: none;
+            z-index: 10;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .stage-photo-img {
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 24px rgba(42, 47, 39, 0.16));
+            mask-image: linear-gradient(to top, transparent 1%, black 10%, black 92%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to top, transparent 1%, black 10%, black 92%, transparent 100%);
+        }
+
+        .hero-copy-flow {
+            width: 100%;
+            height: 100%;
+            padding-top: 20vh;
+        }
+
+        .hero-photo-shape {
+            width: min(48%, 600px);
+            height: 80vh;
+            shape-outside: url("Foto/Foto%20Ke1.png");
+            shape-image-threshold: 0.12;
+            shape-margin: 18px;
+            pointer-events: none;
+        }
+
+        .hero-photo-shape-left {
+            float: right;
+        }
+
+        .hero-photo-shape-right {
+            float: left;
+        }
+
+        .hero-edge-mark {
+            position: absolute;
+            top: 50%;
+            z-index: 11;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(-50%);
+            color: #286b59;
+            opacity: 0.76;
+            pointer-events: none;
+        }
+
+        .hero-edge-mark-tech { left: 12px; }
+        .hero-edge-mark-leadership { right: 12px; color: #b76443; }
+
+        .hero-logo-pair {
+            position: absolute;
+            top: 50%;
+            z-index: 12;
+            display: flex;
+            gap: 16px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero-logo-pair-tech { left: 78%; }
+        .hero-logo-pair-leadership { left: 22%; }
+
+        .hero-logo-tile {
+            display: grid;
+            width: 160px;
+            height: 160px;
+            place-items: center;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .hero-logo-tile img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .hero-edge-icon {
+            display: grid;
+            width: 34px;
+            height: 34px;
+            place-items: center;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            background: rgba(248, 250, 248, 0.58);
+            font-size: 12px;
+        }
+
+        .hero-edge-label {
+            writing-mode: vertical-rl;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+        }
+
+        .hero-edge-line {
+            width: 1px;
+            height: 68px;
+            background: linear-gradient(to bottom, currentColor, transparent);
+        }
+
+        .timeline-rail {
+            border-left: 0;
+        }
+
+        .timeline-rail::before {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 7px;
+            border-left: 2px solid rgba(41, 49, 45, 0.12);
+            content: "";
+        }
+
+        .timeline-rail .timeline-item > div:first-child {
+            top: 50%;
+            translate: 0 -50%;
+        }
+
+        .timeline-rail .timeline-year {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-card {
+            position: relative;
+            display: block;
+            padding-right: 6rem;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .timeline-card:focus-visible {
+            outline: 3px solid var(--color-cyber);
+            outline-offset: 4px;
+        }
+
+        .timeline-card-logo {
+            position: absolute;
+            top: 50%;
+            right: 1.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            object-fit: contain;
+            transform: translateY(-50%);
+            transition: transform 200ms ease;
+        }
+
+        #timeline-section .timeline-card > .timeline-card-logo {
+            margin-top: 0;
+        }
+
+        .timeline-card:hover .timeline-card-logo {
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        #publications .publication-card {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        #publications .publication-card-header {
+            height: 2.75rem;
+            align-items: center;
+        }
+
+        #publications .publication-card-title {
+            line-height: 1.25;
+        }
+
+        #publications .publication-card-footer {
+            margin-top: auto;
+        }
+
+        @media (min-width: 768px) {
+            #publications .publication-card-title {
+                min-height: 7.8125rem;
+            }
+
+            #publications .publication-card-summary {
+                min-height: 9rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #publications .publication-card-title {
+                min-height: 4.6875rem;
+            }
+
+            #publications .publication-card-summary {
+                min-height: 6.25rem;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .timeline-card {
+                padding-right: 4.5rem;
+            }
+
+            .timeline-card-logo {
+                right: 1rem;
+                width: 2.75rem;
+                height: 2.75rem;
+            }
+
+        }
+
+        /* Soft paper surfaces */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(41, 49, 45, 0.1);
+            box-shadow: 0 12px 32px rgba(46, 52, 43, 0.045);
+        }
+
+        .glow-text-cyber, .glow-text-gold { text-shadow: none; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #e9eeeb; }
+        ::-webkit-scrollbar-thumb { background: #c8c8bd; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #286B59; }
+
+        body { scroll-behavior: smooth; }
+        .scroll-reveal {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateY(28px) scale(0.99);
+            transition:
+                opacity 700ms ease,
+                filter 700ms ease,
+                transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+            transition-delay: calc(var(--scroll-reveal-order, 0) * 85ms);
+        }
+        .scroll-reveal.is-visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0) scale(1);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-reveal {
+                opacity: 1;
+                filter: none;
+                transform: none;
+                transition: none;
+            }
+        }
+        #site-nav {
+            background: rgba(233, 238, 235, 0.92) !important;
+            border-color: rgba(41, 49, 45, 0.1) !important;
+        }
+        #site-nav .nav-inner {
+            min-height: 72px;
+        }
+        #site-nav .nav-brand {
+            white-space: nowrap;
+        }
+        #site-nav .nav-links {
+            gap: clamp(1rem, 1.8vw, 1.75rem);
+        }
+        #site-nav .nav-link {
+            position: relative;
+            padding-block: 0.5rem;
+            white-space: nowrap;
+        }
+        #site-nav .nav-link::after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--color-cyber);
+            content: "";
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 180ms ease;
+        }
+        #site-nav .nav-link:hover::after,
+        #site-nav .nav-link:focus-visible::after {
+            transform: scaleX(1);
+        }
+        #site-nav .nav-action { color: #fff !important; }
+        @media (max-width: 1279px) and (min-width: 1024px) {
+            #site-nav .nav-inner { gap: 1rem; }
+            #site-nav .nav-links { gap: 0.85rem; }
+            #site-nav .nav-brand { font-size: 0.95rem; }
+        }
+        @media (max-width: 767px) {
+            #site-nav .nav-inner {
+                min-height: 64px;
+                gap: 0.5rem;
+            }
+            #site-nav .nav-brand {
+                gap: 0.4rem;
+                font-size: 0.875rem;
+            }
+            #site-nav .nav-edition { display: none; }
+            #site-nav .nav-action {
+                flex-shrink: 0;
+                padding: 0.5rem 0.65rem;
+            }
+        }
+        @media (max-width: 360px) {
+            #site-nav .nav-brand { font-size: 0.78rem; }
+            #site-nav .nav-action { font-size: 0.65rem; }
+        }
+        section.bg-dark, section.bg-darker {
+            background-color: #e9eeeb !important;
+            background-image:
+                radial-gradient(ellipse at 10% 0%, rgba(40, 107, 89, 0.035), transparent 48%),
+                linear-gradient(rgba(40, 107, 89, 0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(40, 107, 89, 0.018) 1px, transparent 1px) !important;
+            background-size: auto, 44px 44px, 44px 44px !important;
+            border-color: rgba(41, 49, 45, 0.1) !important;
+        }
+        section.bg-darker { background-color: #dfe6e2 !important; }
+        .text-white { color: var(--color-ink) !important; }
+        .text-gray-300 { color: var(--color-body) !important; }
+        .text-gray-400 { color: var(--color-muted) !important; }
+        .text-gray-500 { color: var(--color-subtle) !important; }
+        .text-cyber { color: var(--color-cyber) !important; }
+        .text-gold { color: var(--color-gold) !important; }
+        .text-neonGreen { color: var(--color-neon-green) !important; }
+        .text-waGreen { color: var(--color-wa) !important; }
+        [class~="border-white/10"], [class~="border-white/15"] {
+            border-color: rgba(41, 49, 45, 0.12) !important;
+        }
+        [class~="bg-white/5"], [class~="bg-white/[0.03]"] {
+            background-color: rgba(41, 49, 45, 0.035) !important;
+        }
+        #hero-split-container h1 { color: var(--color-ink) !important; }
+        #hero-split-container h1 {
+            font-size: clamp(2.35rem, 5.2vw, 4.5rem);
+            letter-spacing: -0.045em;
+        }
+        #hero-split-container .panel-tech h1 span {
+            background: none !important;
+            color: var(--color-cyber) !important;
+            -webkit-text-fill-color: var(--color-cyber);
+        }
+        #hero-split-container .panel-leadership h1 span {
+            background: none !important;
+            color: var(--color-gold) !important;
+            -webkit-text-fill-color: var(--color-gold);
+        }
+        #hero-split-container .text-gray-300 { color: #4d5851 !important; }
+        #hero-split-container .stage-photo-img { mix-blend-mode: multiply; }
+        #hero-split-container .divider-handle { color: var(--color-ink); }
+        #hero-split-container .divider-handle .text-white { color: var(--color-ink) !important; }
+        #hero-split-container > .absolute {
+            background: rgba(248, 250, 248, 0.94) !important;
+            color: #29312d !important;
+            border-color: rgba(41, 49, 45, 0.12) !important;
+            box-shadow: 0 8px 28px rgba(46, 52, 43, 0.09) !important;
+        }
+        @media (max-width: 1199px) {
+            .hero-edge-mark { display: none; }
+            .hero-logo-pair { display: none; }
+        }
+        #cli-terminal .rounded-xl.overflow-hidden .text-white { color: #f7f6f2 !important; }
+        #cli-terminal #terminal-input { color: #f7f6f2 !important; }
+        #cli-terminal .rounded-xl.overflow-hidden .text-cyber { color: var(--color-cyber-light) !important; }
+        #cli-terminal .rounded-xl.overflow-hidden .text-gold { color: var(--color-gold-light) !important; }
+        #cli-terminal .rounded-xl.overflow-hidden .text-neonGreen { color: var(--color-neon-green-light) !important; }
+        #iot-spirometry .lg\:col-span-7 > div .text-white { color: #f7f6f2 !important; }
+        #iot-spirometry .lg\:col-span-7 > div [class~="border-white/10"] {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        #iot-spirometry .lg\:col-span-7 > div [class~="bg-white/5"] {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+        #iot-spirometry .lg\:col-span-7 > div .text-gray-400 { color: #9ca3af !important; }
+        #iot-spirometry .lg\:col-span-7 > div .text-gray-500 { color: #6b7280 !important; }
+        #iot-spirometry .lg\:col-span-7 > div .text-cyber { color: var(--color-cyber-light) !important; }
+        #iot-spirometry .lg\:col-span-7 > div .text-neonGreen { color: var(--color-neon-green-light) !important; }
+        #iot-spirometry .lg\:col-span-7 > div .text-gold { color: var(--color-gold-light) !important; }
+        #cli-terminal .rounded-xl.overflow-hidden .text-gray-300 { color: #d6dfd9 !important; }
+        #cli-terminal .rounded-xl.overflow-hidden .text-gray-400 { color: #aebbb2 !important; }
+        #cli-terminal .rounded-xl.overflow-hidden .text-gray-500 { color: #87958b !important; }
+        @media (max-width: 767px) {
+            #hero-split-container { min-height: 1100px; }
+            .hero-copy-flow { height: auto; padding-top: 0; }
+            .hero-photo-shape { display: none; }
+            #hero-split-container .hero-panel {
+                inset: auto 0 50%;
+                height: 50%;
+                justify-content: flex-start;
+            }
+            #hero-split-container .panel-tech {
+                top: 0;
+                bottom: auto;
+                clip-path: none;
+            }
+            #hero-split-container .panel-leadership {
+                top: 50%;
+                bottom: 0;
+            }
+            #hero-split-container .hero-panel .max-w-7xl {
+                align-items: center;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+            #hero-split-container .panel-leadership .text-right {
+                text-align: left;
+                align-items: flex-start;
+            }
+            #hero-split-container .panel-leadership .max-w-7xl > .w-full > .pt-2 {
+                align-items: flex-start;
+            }
+            #hero-split-container .panel-leadership .max-w-7xl > .w-full > .pt-4 {
+                justify-content: flex-start;
+            }
+            #hero-split-container h1 { font-size: clamp(2.35rem, 10vw, 3.6rem); }
+            #hero-split-container .stage-photo-wrapper,
+            #split-divider,
+            #hero-split-container > .absolute { display: none; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyber selection:text-black">
+
+    <!-- NAVBAR CLEAN & HEADER -->
+    <nav id="site-nav" class="fixed top-0 w-full z-50 backdrop-blur-xl bg-dark/85 border-b border-white/10 transition-all duration-300">
+        <div class="nav-inner max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex justify-between items-center">
+            
+            <!-- Logo Brand -->
+            <a href="#" class="nav-brand font-display font-bold text-base sm:text-lg flex items-center gap-2.5">
+                <span class="relative flex h-2.5 w-2.5">
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyber"></span>
+                </span>
+                <span class="text-white hover:text-cyber transition-colors tracking-tight font-extrabold">Ahmad Dafanda Abdullah</span>
+                <span class="nav-edition text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-gold border border-gold/30">2026 Edition</span>
+            </a>
+
+            <!-- Nav Links -->
+            <div class="nav-links hidden lg:flex items-center text-sm font-medium text-gray-300">
+                <a href="#hero-split-container" class="nav-link hover:text-cyber transition-all">Beranda</a>
+                <a href="#cli-terminal" class="nav-link hover:text-cyber transition-all">Terminal</a>
+                <a href="#iot-spirometry" class="nav-link hover:text-neonGreen transition-all">Proyek IoT</a>
+                <a href="#publications" class="nav-link hover:text-gold transition-all">Publikasi</a>
+                <a href="#timeline-section" class="nav-link hover:text-gold transition-all">Pengalaman</a>
+                <a href="#contact" class="nav-link hover:text-waGreen transition-all">Kontak</a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2.5">
+                <a href="https://ungu.in/smartspirometry" target="_blank" rel="noopener noreferrer" class="nav-action px-3.5 py-1.5 rounded-lg bg-cyber text-white font-bold text-xs hover:bg-cyberDark transition-all flex items-center gap-1.5">
+                    <span>IoT Demo</span>
+                    <i class="fas fa-external-link-alt text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION: ADHAM DANNAWAY SPLIT-SCREEN -->
+    <section id="hero-split-container" class="pt-16">
+        
+<!-- RIGHT PANEL: Leadership & Non-Academic (Stage Gold) -->
+        <div class="hero-panel panel-leadership stage-spotlight-bg">
+    <div class="hero-logo-pair hero-logo-pair-leadership" role="group" aria-label="Logo organisasi kepemimpinan">
+        <span class="hero-logo-tile"><img src="Foto/Logo%20SEMA.png" alt="Logo Senat Mahasiswa"></span>
+        <span class="hero-logo-tile"><img src="Foto/Logo%20HMPSTI.png" alt="Logo HMPSTI"></span>
+    </div>
+    <div class="max-w-[1400px] mx-auto w-full h-full flex items-center justify-end px-6 sm:px-12 md:px-16 relative">
+                <div class="hero-copy-flow w-full max-w-[420px] z-20 text-right space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold/10 border border-gold/40 text-gold font-mono text-xs font-semibold shadow-[0_0_15px_rgba(243,179,68,0.2)]">
+                        <i class="fas fa-crown text-gold"></i> Non-Akademik & Kepemimpinan
+                    </div>
+                    
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-none tracking-tight">
+                        Legislative <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-300 to-amber-500 glow-text-gold">Leader</span>
+                    </h1>
+                    
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed text-right" style="text-wrap: balance;">
+                        Pemimpin strategis dengan rekam jejak di bidang legislasi mahasiswa, manajemen acara, dan relasi publik, guna membangun kepemimpinan berdampak nyata.
+                    </p>
+                    
+                    <div class="pt-1 flex flex-col items-end gap-2 font-mono text-xs sm:text-sm text-gray-300 w-full">
+                        <span class="flex items-center justify-end gap-2 text-right whitespace-nowrap"><strong class="text-gold font-semibold">Ketua Umum</strong> Senat Mahasiswa 2026 <i class="fas fa-check-circle text-gold shrink-0"></i></span>
+                        <span class="flex items-center justify-end gap-2 text-right whitespace-nowrap"><strong class="text-gold font-semibold">Ketua Pelaksana</strong> FIK Got Talent 2025 <i class="fas fa-check-circle text-gold shrink-0"></i></span>
+                        <span class="flex items-center justify-end gap-2 text-right whitespace-nowrap"><strong class="text-gold font-semibold">Ex-Kabid PR</strong> HMPS TI Univ. Amikom <i class="fas fa-check-circle text-gold shrink-0"></i></span>
+                    </div>
+
+                    <div class="pt-3 grid grid-cols-2 gap-3">
+                        <a href="#timeline-section" class="w-full h-11 px-2 rounded-lg bg-gold text-black font-bold text-xs sm:text-sm hover:bg-yellow-400 hover:shadow-[0_0_20px_rgba(243,179,68,0.6)] transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i class="fas fa-award"></i> Profil Kepemimpinan
+                        </a>
+                        <a href="#journey-navigator" class="w-full h-11 px-2 rounded-lg glass-panel hover:bg-white/10 text-white font-semibold text-xs sm:text-sm transition-all border border-gold/30 flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i class="fas fa-route text-gold"></i> Jelajahi Rekam Jejak
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEFT PANEL: Tech & Academic (Cyber Cyan) -->
+        <div class="hero-panel panel-tech cyber-grid-bg">
+            <div class="hero-logo-pair hero-logo-pair-tech" role="group" aria-label="Logo institusi akademik">
+                <span class="hero-logo-tile"><img src="Foto/Logo%20Amikom.png" alt="Logo Universitas Amikom Purwokerto"></span>
+                <span class="hero-logo-tile"><img src="Foto/Logo%20Prodi%20TI.png" alt="Logo Program Studi Teknologi Informasi"></span>
+            </div>
+            <div class="max-w-[1400px] mx-auto w-full h-full flex items-center justify-start px-6 sm:px-12 md:px-16 relative">
+                <div class="hero-copy-flow w-full max-w-[420px] z-20 text-left space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyber/10 border border-cyber/40 text-cyber font-mono text-xs font-semibold shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+                        <i class="fas fa-laptop-code text-cyber"></i> Akademik & Teknologi
+                    </div>
+                    
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-none tracking-tight">
+                        Digital <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber via-cyan-300 to-teal-200 glow-text-cyber">Architect</span>
+                    </h1>
+                    
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed text-left" style="text-wrap: balance;">
+                        Mahasiswa S1 TI Universitas Amikom Purwokerto. Berfokus pada pengembangan web modern & IoT untuk menghadirkan solusi digital fungsional.
+                    </p>
+
+                    <div class="pt-1 flex flex-col items-start gap-2 font-mono text-xs sm:text-sm text-gray-300 w-full">
+                        <span class="flex items-center justify-start gap-2 text-left whitespace-nowrap"><i class="fas fa-graduation-cap text-cyber shrink-0"></i> S1 TI Univ. Amikom Purwokerto</span>
+                        <span class="flex items-center justify-start gap-2 text-left whitespace-nowrap"><i class="fas fa-microchip text-cyber shrink-0"></i> IoT Engineering</span>
+                        <span class="flex items-center justify-start gap-2 text-left whitespace-nowrap"><i class="fas fa-book-open text-cyber shrink-0"></i> Web Developer</span>
+                    </div>
+
+                    <div class="pt-3 grid grid-cols-2 gap-3">
+                        <a href="#iot-spirometry" class="w-full h-11 px-2 rounded-lg bg-cyber text-black font-bold text-xs sm:text-sm hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(0,229,255,0.6)] transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i class="fas fa-bolt"></i> Telemetri IoT
+                        </a>
+                        <a href="#publications" class="w-full h-11 px-2 rounded-lg glass-panel hover:bg-white/10 text-white font-semibold text-xs sm:text-sm transition-all border border-cyber/30 flex items-center justify-center gap-2 whitespace-nowrap">
+                            Jurnal & Riset
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE PHOTO / AVATAR CENTER -->
+        <div class="stage-photo-wrapper" id="stage-photo-container">
+            <!-- Fallback SVG Avatar jika belum upload foto -->
+            <svg id="stage-avatar-svg" viewBox="0 0 500 700" class="hidden w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="cyberRim" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.9" />
+                        <stop offset="50%" stop-color="#ffffff" stop-opacity="0.3" />
+                        <stop offset="100%" stop-color="#F3B344" stop-opacity="0.9" />
+                    </linearGradient>
+                    <linearGradient id="bodyFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#141926" />
+                        <stop offset="100%" stop-color="#050508" />
+                    </linearGradient>
+                </defs>
+                <circle cx="250" cy="280" r="180" fill="none" stroke="url(#cyberRim)" stroke-width="2" opacity="0.3" stroke-dasharray="8 6" />
+                <path d="M 120 700 Q 150 480 180 430 L 220 380 Q 250 375 280 380 L 320 430 Q 350 480 380 700 Z" fill="url(#bodyFill)" stroke="url(#cyberRim)" stroke-width="2" />
+                <path d="M 190 280 Q 185 200 250 190 Q 315 200 310 280 Q 310 350 250 360 Q 190 350 190 280 Z" fill="url(#bodyFill)" stroke="url(#cyberRim)" stroke-width="2.5" />
+                <path d="M 210 265 L 290 265 L 285 280 L 215 280 Z" fill="#00E5FF" opacity="0.85" />
+                <text x="250" y="650" font-family="JetBrains Mono" font-size="12" fill="#00E5FF" text-anchor="middle" opacity="0.8">&lt; AHMAD DAFANDA ABDULLAH /&gt;</text>
+                <text x="250" y="670" font-family="Space Grotesk" font-size="10" fill="#F3B344" text-anchor="middle" letter-spacing="2">AMIKOM PURWOKERTO • SENAT MAHASISWA</text>
+            </svg>
+            <img id="stage-photo-img" src="Foto/Foto%20Ke1.png" class="stage-photo-img" alt="Ahmad Dafanda">
+        </div>
+
+        <!-- DRAGGABLE INTERACTIVE SLIDER DIVIDER BAR -->
+        <div class="split-divider-line" id="split-divider">
+            <div class="divider-handle" id="divider-handle" title="Geser atau Klik untuk Sesuaikan Rasio">
+                <i class="fas fa-arrows-alt-h text-white text-sm"></i>
+                <span class="text-[8px] font-mono font-bold text-cyber uppercase tracking-tighter mt-0.5">GESER</span>
+            </div>
+        </div>
+
+        <!-- PERCENTAGE STATUS BAR & QUICK PRESETS -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-wrap items-center justify-center gap-3 bg-dark/90 px-5 py-2.5 rounded-full border border-white/15 backdrop-blur-md shadow-2xl font-mono text-xs">
+            <button onclick="setSplitPercent(100)" class="px-2.5 py-1 rounded bg-cyber/10 hover:bg-cyber hover:text-black text-cyber font-bold transition-all text-[11px]">100% Tech</button>
+            
+            <div class="flex items-center gap-2">
+                <span class="text-cyber font-bold flex items-center gap-1">
+                    <i class="fas fa-code text-[10px]"></i> <span id="pct-tech">50%</span>
+                </span>
+                <div class="w-16 h-2 bg-gray-800 rounded-full overflow-hidden flex cursor-pointer" onclick="setSplitPercent(50)">
+                    <div id="bar-tech" class="h-full bg-cyber transition-all duration-75" style="width: 50%;"></div>
+                    <div id="bar-leadership" class="h-full bg-gold transition-all duration-75" style="width: 50%;"></div>
+                </div>
+                <span class="text-gold font-bold flex items-center gap-1">
+                    <span id="pct-leadership">50%</span> <i class="fas fa-crown text-[10px]"></i>
+                </span>
+            </div>
+
+            <button onclick="setSplitPercent(0)" class="px-2.5 py-1 rounded bg-gold/10 hover:bg-gold hover:text-black text-gold font-bold transition-all text-[11px]">100% Leader</button>
+        </div>
+    </section>
+
+    <!-- DEVELOPER CLI TERMINAL -->
+    <section id="cli-terminal" class="py-20 bg-darker relative border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-4">
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-cyber font-mono text-xs uppercase tracking-widest mb-1">
+                        <i class="fas fa-terminal"></i> Interactive Shell
+                    </div>
+                    <h2 class="font-display text-3xl font-bold text-white">Developer Console CLI</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm mt-1">Jelajahi seluruh halaman lewat prompt, misalnya <span class="font-mono text-cyber">explore</span> atau <span class="font-mono text-cyber">go iot</span>.</p>
+                </div>
+                <div class="flex items-center gap-2 font-mono text-xs text-gray-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
+                    <span class="w-2.5 h-2.5 rounded-full bg-neonGreen animate-pulse"></span>
+                    <span>dafanda@amikom:~$ online</span>
+                </div>
+            </div>
+
+            <div class="rounded-xl overflow-hidden bg-[#0a0d14] border border-white/15 shadow-2xl">
+                <div class="bg-white/5 px-4 py-3 flex items-center justify-between border-b border-white/10">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80 cursor-pointer" onclick="executeCommand('clear')"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        <span class="ml-3 font-mono text-xs text-gray-400 font-semibold">zsh - ahmad_dafanda_profile (v2026.1)</span>
+                    </div>
+                    <div class="font-mono text-[11px] text-gray-500 hidden sm:block">
+                        UTF-8 | Amikom Purwokerto
+                    </div>
+                </div>
+
+                <div id="terminal-logs" class="p-5 font-mono text-xs sm:text-sm h-72 overflow-y-auto space-y-3 text-gray-300">
+                    <div class="text-cyber font-bold">=== WELCOME TO AHMAD DAFANDA ABDULLAH INTERACTIVE CLI ===</div>
+                    <div class="text-gray-400">Universitas Amikom Purwokerto | Web Developer & Spirometry IoT Pioneer</div>
+                    <div class="text-gold">Ketik <span class="bg-white/10 px-1.5 py-0.5 rounded text-white font-bold">help</span> untuk melihat daftar perintah lengkap.</div>
+                    <div class="border-b border-white/5 pb-2"></div>
+                </div>
+
+                <form id="terminal-form" class="bg-black/50 p-3.5 border-t border-white/10 flex items-center gap-2">
+                    <span class="text-neonGreen font-mono text-xs sm:text-sm font-bold flex items-center gap-1">
+                        <span>dafanda@admin</span><span class="text-cyber">:~$</span>
+                    </span>
+                    <input type="text" id="terminal-input" class="bg-transparent flex-1 focus:outline-none font-mono text-white text-xs sm:text-sm placeholder-gray-600" placeholder="Coba: explore, go experience, go contact..." autocomplete="off">
+                    <button type="submit" class="px-3 py-1 rounded bg-cyber/20 text-cyber border border-cyber/40 font-mono text-xs hover:bg-cyber hover:text-black transition-all">
+                        RUN
+                    </button>
+                </form>
+            </div>
+
+            <div class="mt-4 flex flex-nowrap gap-1 overflow-x-auto font-mono text-[11px]">
+                <span class="shrink-0 whitespace-nowrap text-gray-500 self-center mr-1">Quick Commands:</span>
+                <button onclick="executeCommand('help')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-white/5 border border-white/10 text-gray-300 hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">help</button>
+                <button onclick="executeCommand('explore')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-cyber/10 border border-cyber/30 text-cyber hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">explore</button>
+                <button onclick="executeCommand('go home')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-white/5 border border-white/10 text-gray-300 hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">go home</button>
+                <button onclick="executeCommand('cat cv.json')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-white/5 border border-white/10 text-gray-300 hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">cat cv.json</button>
+                <button onclick="executeCommand('academic')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-cyber/10 border border-cyber/30 text-cyber hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">academic</button>
+                <button onclick="executeCommand('leadership')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-gold/10 border border-gold/30 text-gold hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">leadership</button>
+                <button onclick="executeCommand('journals')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-white/5 border border-white/10 text-gray-300 hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">journals</button>
+                <button onclick="executeCommand('spirometry')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-neonGreen/10 border border-neonGreen/30 text-neonGreen hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">spirometry</button>
+                <button onclick="executeCommand('skills')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-white/5 border border-white/10 text-gray-300 hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">skills</button>
+                <button onclick="executeCommand('clear')" class="min-w-0 flex-1 whitespace-nowrap px-2 py-1 text-center rounded bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-cyber hover:border-cyber hover:text-black hover:-translate-y-0.5 transition-all duration-300">clear</button>
+            </div>
+        </div>
+    </section>
+
+<!-- IOT TELEMETRY SECTION: SMART SPIROMETRY -->
+    <section id="iot-spirometry" class="py-20 bg-dark relative border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+                
+                <!-- LEFT COLUMN: Description & Controls -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neonGreen/10 text-neonGreen text-xs font-mono font-bold border border-neonGreen/30">
+                            <i class="fas fa-heartbeat animate-pulse"></i> Featured IoT Innovation
+                        </div>
+                        
+                        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white leading-tight">
+                            Smart Spirometry <br>
+                            <span class="text-cyber">Waterflow Sensor</span>
+                        </h2>
+                        
+                        <p class="text-gray-300 text-xs sm:text-sm leading-relaxed text-justify">
+                            Inovasi perangkat IoT medis berbiaya terjangkau (Low-Budget) berbasis mikrokontroler dan sensor aliran air (waterflow sensor) yang diimplementasikan khusus untuk mengukur volume serta laju tiupan napas secara real-time.
+                        </p>
+
+                        <div class="p-4 rounded-xl glass-panel border border-white/10 space-y-2.5 font-mono text-xs">
+                            <div class="flex justify-between items-center pb-2 border-b border-white/10">
+                                <span class="text-gray-400">Telemetry Protocol:</span>
+                                <span class="text-cyber font-semibold">MQTT / WebSockets</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-2 border-b border-white/10">
+                                <span class="text-gray-400">Sensor Hardware:</span>
+                                <a href="https://ungu.in/profilesmartspirometry" target="_blank" rel="noopener noreferrer" class="text-gold hover:underline flex items-center gap-1 font-bold">
+                                    ungu.in/profilesmartspirometry <i class="fas fa-external-link-alt text-[10px]"></i>
+                                </a>
+                            </div>
+                            <div class="flex justify-between items-center pb-2 border-b border-white/10">
+                                <span class="text-gray-400">Live Project URL:</span>
+                                <a href="https://ungu.in/smartspirometry" target="_blank" rel="noopener noreferrer" class="text-neonGreen hover:underline flex items-center gap-1 font-bold">
+                                    ungu.in/smartspirometry <i class="fas fa-external-link-alt text-[10px]"></i>
+                                </a>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">Source Code:</span>
+                                <a href="https://github.com/Ahmaddaff/smart-spirometry-web" target="_blank" rel="noopener noreferrer" class="text-cyber hover:underline flex items-center gap-1 font-bold">
+                                    <i class="fab fa-github text-sm"></i> github.com/Ahmaddaff <i class="fas fa-external-link-alt text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 pt-1">
+                        <div class="text-[11px] font-mono text-gray-400 uppercase tracking-wider">Simulasi Uji Hembusan Napas:</div>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <button onclick="triggerExhale()" class="px-4 py-2.5 rounded-lg bg-cyber text-black font-bold text-xs hover:bg-cyan-300 transition-all flex items-center justify-center gap-2">
+                                <i class="fas fa-wind"></i> Uji Tiup Kuat (Exhale)
+                            </button>
+                            <button onclick="triggerResting()" class="px-4 py-2.5 rounded-lg bg-cyber text-black font-bold text-xs hover:bg-cyan-300 transition-all flex items-center justify-center gap-2">
+                                <i class="fas fa-lungs"></i> Napas Normal
+                            </button>
+                        </div>
+                        <button onclick="resetTelemetry()" class="w-full py-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 text-xs font-mono border border-red-500/20 transition-all">
+                            <i class="fas fa-redo-alt mr-1.5"></i> Reset Grafik Telemetri
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Realtime Telemetry Graph -->
+                <div class="lg:col-span-7 h-full">
+                    <div class="bg-[#080b12] border border-cyber/30 rounded-2xl p-5 sm:p-6 shadow-[0_0_40px_rgba(0,229,255,0.1)] relative overflow-hidden h-full flex flex-col justify-between">
+                        
+                        <!-- Header Graph -->
+                        <div class="flex flex-wrap justify-between items-center gap-3 pb-3 border-b border-white/10">
+                            <div>
+                                <h3 class="text-white font-mono text-sm font-bold flex items-center gap-2">
+                                    <i class="fas fa-wave-square text-cyber animate-pulse"></i>
+                                    REAL-TIME SPIROMETRY GRAPH
+                                </h3>
+                                <p class="text-gray-500 text-[11px] font-mono mt-0.5">Waterflow Pulse Signal Visualizer</p>
+                            </div>
+                            <div class="flex items-center gap-2 font-mono text-[10px] sm:text-xs">
+                                <div class="flex rounded-lg border border-white/10 bg-white/5 p-0.5">
+                                    <button id="graph-flow-btn" onclick="setGraphMode('flow')" class="px-2.5 py-1 rounded-md bg-cyber text-black font-bold transition-colors">FLOW</button>
+                                    <button id="graph-volume-btn" onclick="setGraphMode('volume')" class="px-2.5 py-1 rounded-md text-gray-400 hover:text-white transition-colors">VOLUME</button>
+                                </div>
+                                <button id="graph-pause-btn" onclick="toggleGraphPause()" class="px-2.5 py-1.5 rounded-lg border border-white/10 bg-white/5 text-gray-300 hover:text-cyber hover:border-cyber/40 transition-colors" aria-label="Pause grafik">
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <span id="graph-live-status" class="hidden sm:flex items-center gap-1.5 text-neonGreen">
+                                    <span id="graph-live-dot" class="w-2 h-2 rounded-full bg-neonGreen animate-ping"></span>
+                                    <span id="graph-live-label">LIVE PULSE</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Realtime Canvas Waveform (Lebar & Tinggi Dinamis) -->
+                        <div id="spirometryChart" class="relative flex-1 min-h-[240px] w-full bg-black/60 rounded-xl border border-white/10 overflow-hidden my-4">
+                            <canvas id="spirometryCanvas" class="w-full h-full" aria-label="Grafik aliran dan volume spirometri, arahkan kursor untuk melihat nilai"></canvas>
+                            <div id="spirometryTooltip" class="pointer-events-none absolute z-10 hidden rounded-lg border border-cyber/30 bg-[#080b12]/95 px-3 py-2 font-mono text-[10px] text-white shadow-lg">
+                                <div id="spirometryTooltip-time" class="text-gray-400"></div>
+                                <div id="spirometryTooltip-value" class="mt-1 font-bold text-cyber"></div>
+                            </div>
+                            <div class="pointer-events-none absolute bottom-2 left-3 font-mono text-[9px] text-gray-500">OLDER</div>
+                            <div class="pointer-events-none absolute bottom-2 right-3 font-mono text-[9px] text-gray-500">NOW</div>
+                        </div>
+
+                        <!-- Telemetry Stat Counters -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono">
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/10 text-center">
+                                <div class="text-gray-400 text-[10px] uppercase">Laju Aliran</div>
+                                <div id="flow-rate-val" class="text-xl font-bold text-cyber mt-1">0.0 <span class="text-xs font-normal">L/s</span></div>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/10 text-center">
+                                <div class="text-gray-400 text-[10px] uppercase">Total Volume</div>
+                                <div id="volume-val" class="text-xl font-bold text-neonGreen mt-1">0.00 <span class="text-xs font-normal">L</span></div>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/10 text-center">
+                                <div class="text-gray-400 text-[10px] uppercase">Peak PEFR</div>
+                                <div id="pefr-val" class="text-xl font-bold text-gold mt-1">0.0 <span class="text-xs font-normal">L/m</span></div>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/10 text-center">
+                                <div class="text-gray-400 text-[10px] uppercase">Est. FEV1</div>
+                                <div id="fev1-val" class="text-xl font-bold text-white mt-1">0.00 <span class="text-xs font-normal">L</span></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ACADEMIC & RESEARCH PUBLICATIONS SECTION -->
+    <section id="publications" class="py-20 bg-darker border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold font-mono text-xs font-semibold border border-gold/30 mb-3">
+                    <i class="fas fa-book-open"></i> Riset & Akademik
+                </div>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Publikasi Jurnal Ilmiah</h2>
+                <p class="text-gray-400 text-xs sm:text-sm mt-2">
+                    Publikasi kolaboratif tentang literasi IoT melalui Wokwi dan sistem pelaporan fasilitas kampus berbasis data.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Journal 1: Aksi Kolektif -->
+                <div class="publication-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-4 relative group">
+                    <div class="publication-card-header flex justify-between items-start">
+                        <span class="px-3 py-1 rounded-md bg-gold/20 text-gold text-xs font-mono font-bold border border-gold/40">
+                            Aksi Kolektif: Jurnal Pengabdian
+                        </span>
+                        <a href="https://glonus.org/index.php/aksikolektif/article/view/331" target="_blank" rel="noopener noreferrer" aria-label="Buka artikel di Aksi Kolektif">
+                            <i class="fas fa-external-link-alt text-sm"></i>
+                        </a>
+                    </div>
+                    
+                    <h3 class="publication-card-title font-display text-xl font-bold text-white group-hover:text-gold transition-colors">
+                        Peningkatan Literasi IoT Melalui Simulasi Wokwi Bagi Siswa SMP Muhammadiyah 1 Purwokerto
+                    </h3>
+                    
+                    <p class="publication-card-summary text-gray-300 text-xs leading-relaxed text-justify">
+                        Pelatihan IoT untuk 30 siswa menggunakan simulator Wokwi, termasuk praktik membuat simulasi lampu lalu lintas dengan mikrokontroler. Hasilnya menunjukkan Wokwi membantu pembelajaran IoT di sekolah dengan keterbatasan perangkat keras.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-mono text-gray-400">
+                        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/10">Ahmad Dafanda Abdullah et al.</span>
+                        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/10">2025 · Vol. 2 No. 1</span>
+                        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/10">Hal. 51–57</span>
+                    </div>
+
+                    <div class="publication-card-footer pt-3 border-t border-white/10 flex justify-between items-center">
+                        <a href="https://glonus.org/index.php/aksikolektif/article/view/331" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-gold hover:underline flex items-center gap-1.5">
+                            <span>Baca Artikel</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                        <button onclick="copyCitation('Abdullah, Ahmad Dafanda, et al. (2025). Peningkatan Literasi IoT Melalui Simulasi Wokwi Bagi Siswa SMP Muhammadiyah 1 Purwokerto. Aksi Kolektif: Jurnal Pengabdian, 2(1), 51–57. https://glonus.org/index.php/aksikolektif/article/view/331')" class="text-xs text-gray-400 hover:text-white font-mono flex items-center gap-1">
+                            <i class="fas fa-quote-right"></i> Copy Citation
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Journal 2: Indonesian Journal of Multidisciplinary Scientific Studies -->
+                <div class="publication-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-cyber/50 transition-all space-y-4 relative group">
+                    <div class="publication-card-header flex justify-between items-start">
+                        <span class="px-3 py-1 rounded-md bg-cyber/20 text-cyber text-xs font-mono font-bold border border-cyber/40">
+                            Indonesian Journal of Multidisciplinary Scientific Studies
+                        </span>
+                        <a href="https://doi.org/10.33151/ijomss.v4i4.959" target="_blank" rel="noopener noreferrer" aria-label="Buka artikel di Indonesian Journal of Multidisciplinary Scientific Studies">
+                            <i class="fas fa-external-link-alt text-sm"></i>
+                        </a>
+                    </div>
+                    
+                    <h3 class="publication-card-title font-display text-xl font-bold text-white group-hover:text-cyber transition-colors">
+                        Sistem Pelaporan Kerusakan Fasilitas Kampus Berbasis Identitas Terverifikasi dan Agregasi Data untuk Prioritas Perbaikan
+                    </h3>
+                    
+                    <p class="publication-card-summary text-gray-300 text-xs leading-relaxed text-justify">
+                        Penelitian ini merancang sistem pelaporan kerusakan fasilitas kampus dengan identitas pelapor terverifikasi dan dashboard data agregat. Abstrak melaporkan formulir laporan terstruktur, ringkasan tren per lokasi, serta dukungan untuk verifikasi, privasi, transparansi, dan penentuan prioritas perbaikan.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-mono text-gray-400">
+                        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/10">Ahmad Dafanda Abdullah et al.</span>
+                        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/10">2026 · Vol. 4 No. 4</span>
+                        <span class="bg-white/5 px-2.5 py-1 rounded border border-white/10">DOI: 10.33151/ijomss.v4i4.959</span>
+                    </div>
+
+                    <div class="publication-card-footer pt-3 border-t border-white/10 flex justify-between items-center">
+                        <a href="https://doi.org/10.33151/ijomss.v4i4.959" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-cyber hover:underline flex items-center gap-1.5">
+                            <span>Baca Artikel</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                        <button onclick="copyCitation('Abdullah, Ahmad Dafanda, et al. (2026). Sistem Pelaporan Kerusakan Fasilitas Kampus Berbasis Identitas Terverifikasi dan Agregasi Data untuk Prioritas Perbaikan. Indonesian Journal of Multidisciplinary Scientific Studies, 4(4). https://doi.org/10.33151/ijomss.v4i4.959')" class="text-xs text-gray-400 hover:text-white font-mono flex items-center gap-1">
+                            <i class="fas fa-quote-right"></i> Copy Citation
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DUAL TRACK TIMELINE EXPERIENCE SECTION -->
+    <section id="timeline-section" class="py-24 bg-dark relative border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold font-mono text-xs font-semibold border border-gold/30 mb-2">
+                        <i class="fas fa-history"></i> Track Record
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Pengalaman & Organisasi</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm mt-1">Perjalanan kepemimpinan dan kontribusi nyata di kampus.</p>
+                </div>
+
+                <!-- Timeline Filters -->
+                <div class="flex bg-white/5 p-1 rounded-xl border border-white/10 font-mono text-xs">
+                    <button onclick="filterTimeline('all')" id="btn-tl-all" class="px-4 py-2 rounded-lg bg-cyber text-black font-bold transition-all">All Track</button>
+                    <button onclick="filterTimeline('tech')" id="btn-tl-tech" class="px-4 py-2 rounded-lg text-gray-400 hover:text-white transition-all">Academic & Tech</button>
+                    <button onclick="filterTimeline('leadership')" id="btn-tl-leadership" class="px-4 py-2 rounded-lg text-gray-400 hover:text-white transition-all">Leadership</button>
+                </div>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="hidden" aria-hidden="true">
+                
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item relative group" data-category="leadership">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform shadow-[0_0_15px_rgba(243,179,68,0.8)]"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2026</div>
+                    
+                    <div class="glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-3">
+                        <div class="flex flex-wrap justify-between items-center gap-2">
+                            <span class="text-xs font-mono text-gold font-bold uppercase sm:hidden">2026</span>
+                            <span class="px-2.5 py-0.5 rounded bg-gold/20 text-gold font-mono text-[11px] font-bold border border-gold/30">Puncak Kepemimpinan</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white">Ketua Umum — Senat Mahasiswa</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            Memimpin lembaga legislatif tinggi mahasiswa tingkat universitas dalam pengawasan, pemikiran kebijakan strategis, dan penyaluran aspirasi publik.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item relative group" data-category="leadership">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2026</div>
+                    
+                    <div class="glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-3">
+                        <h3 class="font-display text-xl font-bold text-white">Chief Field Coordinator — TECH4FEST</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            Mengkoordinasikan seluruh lapangan, teknis operasional, dan manajerial tim dalam festival teknologi tahunan berskala nasional.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item relative group" data-category="leadership">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2025</div>
+                    
+                    <div class="glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-3">
+                        <h3 class="font-display text-xl font-bold text-white">Ketua Pelaksana — FIK Got Talent</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            Penanggung jawab utama pencarian bakat Fakultas Ilmu Komputer. Mengelola tim panitia, penganggaran, dan konsep panggung utama.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item relative group" data-category="tech">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-5 h-5 rounded-full bg-cyber border-4 border-dark group-hover:scale-125 transition-transform shadow-[0_0_15px_rgba(0,229,255,0.8)]"></div>
+                    <div class="hidden sm:block absolute -left-32 top-1 font-mono text-xs text-cyber font-bold">2024 - 2025</div>
+                    
+                    <div class="glass-panel rounded-2xl p-6 border border-white/10 hover:border-cyber/50 transition-all space-y-3">
+                        <span class="px-2.5 py-0.5 rounded bg-cyber/20 text-cyber font-mono text-[11px] font-bold border border-cyber/30">Public Relations Lead</span>
+                        <h3 class="font-display text-xl font-bold text-white">HMPS Teknologi Informasi</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            Kepala Departemen PR. Memimpin tim dalam proyek **Serutek** (Penanggung Jawab), **Technofest** (Koordinator Humas), dan **Connextion** (Penanggung Jawab).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item relative group" data-category="tech">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-5 h-5 rounded-full bg-cyber border-4 border-dark group-hover:scale-125 transition-transform"></div>
+                    <div class="hidden sm:block absolute -left-32 top-1 font-mono text-xs text-cyber font-bold">2024 - Now</div>
+                    
+                    <div class="glass-panel rounded-2xl p-6 border border-white/10 hover:border-cyber/50 transition-all space-y-3">
+                        <h3 class="font-display text-xl font-bold text-white">Universitas Amikom Purwokerto</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            Mahasiswa S1 Teknologi Informasi. Fokus pada rekayasa perangkat lunak, sistem IoT medis, dan keterlibatan aktif dalam kepanitiaan.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="timeline-rail relative ml-4 sm:ml-32 pl-6 sm:pl-10 space-y-12">
+                <div class="timeline-item relative group" data-category="leadership">
+                    <div class="absolute -left-[26px] sm:-left-[42px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform shadow-[0_0_15px_rgba(243,179,68,0.8)]"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2026</div>
+                    <a href="https://www.instagram.com/sema.amikompwt?srtk=d3RzZzZvc3ZnNjNv" target="_blank" rel="noopener noreferrer" aria-label="Buka Instagram Senat Mahasiswa" class="timeline-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-3">
+                        <span class="text-xs font-mono text-gold font-bold uppercase sm:hidden">2026</span>
+                        <h3 class="font-display text-xl font-bold text-white">Senat Mahasiswa</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Ketua Umum</p>
+                        <img class="timeline-card-logo" src="Foto/Logo%20SEMA.png" alt="Logo Senat Mahasiswa">
+                    </a>
+                </div>
+
+                <div class="timeline-item relative group" data-category="leadership">
+                    <div class="absolute -left-[26px] sm:-left-[42px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2026</div>
+                    <a href="https://www.instagram.com/tech4fest26?dlrf=MWJ3cm84Zm9tb3cxNg==" target="_blank" rel="noopener noreferrer" aria-label="Buka Instagram TECH4FEST" class="timeline-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-3">
+                        <span class="text-xs font-mono text-gold font-bold uppercase sm:hidden">2026</span>
+                        <h3 class="font-display text-xl font-bold text-white">TECH4FEST</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Chief Field Coordinator</p>
+                        <img class="timeline-card-logo" src="Foto/Logo%20TNF.png" alt="Logo TECH4FEST">
+                    </a>
+                </div>
+
+                <div class="timeline-item relative group" data-category="leadership">
+                    <div class="absolute -left-[26px] sm:-left-[42px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2025</div>
+                    <a href="https://www.instagram.com/fik.amikompurwokerto?cplk=djVjZDBzNTI1YTM1" target="_blank" rel="noopener noreferrer" aria-label="Buka Instagram Expo Kampus Berdampak FIK" class="timeline-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-3">
+                        <span class="text-xs font-mono text-gold font-bold uppercase sm:hidden">2025</span>
+                        <h3 class="font-display text-xl font-bold text-white">Expo Kampus Berdampak FIK</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Wakil Ketua Expo</p>
+                        <img class="timeline-card-logo" src="Foto/Logo%20FIK.png" alt="Logo FIK">
+                    </a>
+                </div>
+
+                <div class="timeline-item relative group" data-category="leadership">
+                    <div class="absolute -left-[26px] sm:-left-[42px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2025</div>
+                    <a href="https://www.instagram.com/kpuamikompwt?vrfl=MW1pcG0wbHUzZmZqMQ==" target="_blank" rel="noopener noreferrer" aria-label="Buka Instagram Pemira" class="timeline-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-3">
+                        <span class="text-xs font-mono text-gold font-bold uppercase sm:hidden">2025</span>
+                        <h3 class="font-display text-xl font-bold text-white">Pemira</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Sekretaris Panitia Pengawas</p>
+                        <img class="timeline-card-logo" src="Foto/Logo%20Pemira.png" alt="Logo Pemira">
+                    </a>
+                </div>
+
+                <div class="timeline-item relative group" data-category="leadership">
+                    <div class="absolute -left-[26px] sm:-left-[42px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2025</div>
+                    <a href="https://www.instagram.com/fik.techcompetition_?xtok=d3I3enEyc3lnYWR6" target="_blank" rel="noopener noreferrer" aria-label="Buka Instagram FIK Got Talent" class="timeline-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-3">
+                        <span class="text-xs font-mono text-gold font-bold uppercase sm:hidden">2025</span>
+                        <h3 class="font-display text-xl font-bold text-white">FIK Got Talent</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Ketua Pelaksana</p>
+                        <img class="timeline-card-logo" src="Foto/Logo%20FGT.png" alt="Logo FIK Got Talent">
+                    </a>
+                </div>
+
+                <div class="timeline-item relative group" data-category="leadership">
+                    <div class="absolute -left-[26px] sm:-left-[42px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2025</div>
+                    <a href="https://www.instagram.com/sema.amikompwt?srtk=d3RzZzZvc3ZnNjNv" target="_blank" rel="noopener noreferrer" aria-label="Buka Instagram Senat Mahasiswa" class="timeline-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-3">
+                        <span class="text-xs font-mono text-gold font-bold uppercase sm:hidden">2025</span>
+                        <h3 class="font-display text-xl font-bold text-white">Senat Mahasiswa</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Legislatif Muda</p>
+                        <img class="timeline-card-logo" src="Foto/Logo%20SEMA.png" alt="Logo Senat Mahasiswa">
+                    </a>
+                </div>
+
+                <div class="timeline-item relative group" data-category="tech">
+                    <div class="absolute -left-[26px] sm:-left-[42px] top-1.5 w-5 h-5 rounded-full bg-gold border-4 border-dark group-hover:scale-125 transition-transform"></div>
+                    <div class="timeline-year hidden sm:block absolute -left-32 top-1 font-mono text-xs text-gold font-bold">2024&ndash;2025</div>
+                    <a href="https://www.instagram.com/hmpsti_amikompwt?mdxt=c3I0emp6bXF5eTlu" target="_blank" rel="noopener noreferrer" aria-label="Buka Instagram HMPS Teknologi Informasi" class="timeline-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-cyber/50 transition-all space-y-3">
+                        <span class="text-xs font-mono text-gold font-bold uppercase sm:hidden">2024&ndash;2025</span>
+                        <h3 class="font-display text-xl font-bold text-white">HMPS Teknologi Informasi</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Kepala Departemen Public Relation</p>
+                        <ul class="space-y-1.5 text-gray-400 text-xs leading-relaxed list-disc list-inside">
+                            <li>Kepanitiaan Serutek | Penanggung Jawab</li>
+                            <li>Kepanitiaan Technofest | Koordinator Humas</li>
+                            <li>Kepanitiaan Connextion | Penanggung Jawab</li>
+                        </ul>
+                        <img class="timeline-card-logo" src="Foto/Logo%20HMPSTI.png" alt="Logo HMPSTI">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE JOURNEY NAVIGATOR -->
+    <section id="journey-navigator" class="py-20 bg-darker relative overflow-hidden border-t border-white/10">
+        <div class="absolute -top-24 right-0 w-72 h-72 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-4 relative">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neonGreen/10 text-neonGreen font-mono text-xs font-semibold border border-neonGreen/30 mb-2">
+                        <i class="fas fa-compass"></i> Interactive Journey Navigator
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Jelajahi Rekam Jejak</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm mt-1">Pilih fase perjalanan untuk melihat fokus kontribusinya.</p>
+                </div>
+                <div class="font-mono text-xs text-gray-500 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-neonGreen animate-pulse"></span>
+                    DATA JOURNEY: ACTIVE
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-5">
+                <div class="lg:col-span-2 flex flex-col gap-3 lg:h-[440px]" role="tablist" aria-label="Fase perjalanan">
+                    <button type="button" onclick="exploreJourney('senat', this)" class="journey-tab text-left p-4 rounded-xl border border-gold/50 bg-gold/10 transition-colors lg:flex-1" aria-selected="true">
+                        <span class="font-mono text-[11px] text-gold">2025&ndash;2026</span>
+                        <span class="block text-white font-bold mt-1">Senat Mahasiswa</span>
+                        <span class="block text-gray-400 text-xs mt-1">Legislatif Muda &rarr; Ketua Umum</span>
+                    </button>
+                    <button type="button" onclick="exploreJourney('event', this)" class="journey-tab text-left p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-cyber/50 transition-colors lg:flex-1" aria-selected="false">
+                        <span class="font-mono text-[11px] text-cyber">2025&ndash;2026</span>
+                        <span class="block text-white font-bold mt-1">Event Kampus</span>
+                        <span class="block text-gray-400 text-xs mt-1">FIK Got Talent, Expo, Pemira &amp; TECH4FEST</span>
+                    </button>
+                    <button type="button" onclick="exploreJourney('hmps', this)" class="journey-tab text-left p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-cyber/50 transition-colors lg:flex-1" aria-selected="false">
+                        <span class="font-mono text-[11px] text-cyber">2024&ndash;2025</span>
+                        <span class="block text-white font-bold mt-1">HMPS Teknologi Informasi</span>
+                        <span class="block text-gray-400 text-xs mt-1">Kepala Departemen Public Relation</span>
+                    </button>
+                </div>
+
+                <div class="lg:col-span-3 glass-panel group relative overflow-hidden rounded-2xl border border-white/10 p-6 sm:p-8 flex flex-col justify-between min-h-[290px] lg:h-[440px] lg:min-h-0">
+                    <div class="absolute -right-16 -bottom-24 w-80 h-80 rounded-full bg-gold/15 blur-3xl pointer-events-none"></div>
+                    <img src="Foto/Foto%20Ke2.png" alt="Ahmad Dafanda mengenakan batik" class="hidden sm:block absolute right-0 bottom-0 h-[96%] max-w-[44%] object-contain object-bottom opacity-90 drop-shadow-[0_0_25px_rgba(243,179,68,0.35)] transition-transform duration-500 group-hover:scale-105 group-hover:-translate-x-2">
+                    <div class="relative z-10 max-w-full sm:max-w-[60%]">
+                        <div class="flex items-center justify-between gap-3 mb-5">
+                            <span id="journey-year" class="px-3 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 text-xs font-mono font-bold">2025&ndash;2026</span>
+                            <span id="journey-status" class="text-[10px] font-mono tracking-widest text-neonGreen">LEADERSHIP PATH</span>
+                        </div>
+                        <h3 id="journey-title" class="font-display text-2xl sm:text-3xl font-bold text-white">Senat Mahasiswa</h3>
+                        <p id="journey-description" class="text-gray-300 text-sm leading-relaxed mt-3 text-justify">Perjalanan di Senat Mahasiswa dimulai pada 2025 sebagai Legislatif Muda di Komisi B, bertugas mengawal fungsi legislasi dan menyerap aspirasi mahasiswa secara langsung. Pengalaman ini menjadi pijakan kuat hingga dipercaya mengemban amanah sebagai Ketua Umum Senat Mahasiswa 2026.</p>
+                        <div id="journey-tags" class="flex flex-wrap gap-2 mt-5">
+                            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-xs text-gray-300">Legislatif Muda</span>
+                            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-xs text-gray-300">Ketua Umum</span>
+                        </div>
+                    </div>
+                    <div class="relative z-10 max-w-full sm:max-w-[60%] mt-8 pt-5 border-t border-white/10 flex items-center gap-4">
+                        <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden"><div id="journey-progress" class="h-full w-full bg-gradient-to-r from-gold to-yellow-300 transition-all duration-500"></div></div>
+                        <span id="journey-progress-label" class="font-mono text-xs text-gold whitespace-nowrap">NEXT: 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS MATRIX SECTION -->
+    <section id="skills-section" class="py-20 bg-darker border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber/10 text-cyber font-mono text-xs font-semibold border border-cyber/30 mb-2">
+                    <i class="fas fa-cogs"></i> Core Competencies
+                </div>
+                <h2 class="font-display text-3xl font-bold text-white">Keahlian & Kompetensi Utama</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Skill Group 1 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 space-y-4">
+                    <div class="flex items-center gap-3 text-gold font-bold font-display text-lg border-b border-white/10 pb-3">
+                        <i class="fas fa-users-cog"></i> Leadership & Management
+                    </div>
+                    <ul class="space-y-2.5 font-mono text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold"></i> Legislative Leadership</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold"></i> Event Director & Public Speaking</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold"></i> Strategic Problem Solving</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold"></i> Team Collaboration & Motivation</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Group 2 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 space-y-4">
+                    <div class="flex items-center gap-3 text-cyber font-bold font-display text-lg border-b border-white/10 pb-3">
+                        <i class="fas fa-laptop-code"></i> Tech & Engineering
+                    </div>
+                    <ul class="space-y-2.5 font-mono text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyber"></i> Waterflow Sensor & Microcontrollers</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyber"></i> Full-Stack Web Development</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyber"></i> MQTT & Telemetry Architecture</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyber"></i> System & API Design</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Group 3 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 space-y-4">
+                    <div class="flex items-center gap-3 text-neonGreen font-bold font-display text-lg border-b border-white/10 pb-3">
+                        <i class="fas fa-language"></i> Communication & Soft Skills
+                    </div>
+                    <ul class="space-y-2.5 font-mono text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-neonGreen"></i> Public Relations & Media</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-neonGreen"></i> Bahasa Indonesia (Native)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-neonGreen"></i> English (Professional / Working)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-neonGreen"></i> Physical & Mental Endurance</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 bg-dark relative border-t border-white/10">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-8">
+            
+            <div class="space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-waGreen/10 text-waGreen font-mono text-xs font-semibold border border-waGreen/30">
+                    <i class="fas fa-comments"></i> Get In Touch
+                </div>
+                <h2 class="font-display text-4xl font-extrabold text-white">Mari Berkolaborasi</h2>
+                <p class="text-gray-400 text-xs sm:text-sm max-w-lg mx-auto">
+                    Terbuka untuk diskusi proyek Web/IoT, riset akademis, serta undangan pembicara atau kolaborasi organisasi.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
+                <a href="https://wa.me/6289541169504" target="_blank" class="glass-panel p-5 rounded-2xl border border-white/10 hover:border-waGreen hover:bg-waGreen/10 transition-all group">
+                    <i class="fab fa-whatsapp text-2xl text-waGreen mb-2 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-gray-400 text-[10px]">WhatsApp Direct</div>
+                    <div class="text-white font-bold mt-1">+62 895-4116-9504</div>
+                </a>
+
+                <a href="mailto:adnafaddamha@gmail.com" class="glass-panel p-5 rounded-2xl border border-white/10 hover:border-cyber hover:bg-cyber/10 transition-all group">
+                    <i class="fas fa-envelope text-2xl text-cyber mb-2 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-gray-400 text-[10px]">Email Official</div>
+                    <div class="text-white font-bold mt-1">adnafaddamha@gmail.com</div>
+                </a>
+
+                <a href="https://www.instagram.com/siamatcuyy?psln=MXYwcDBpbXN5Zzd4Nw==" target="_blank" rel="noopener noreferrer" class="glass-panel p-5 rounded-2xl border border-white/10 hover:border-pink-400 hover:bg-pink-400/10 transition-all group">
+                    <i class="fab fa-instagram text-2xl text-pink-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-gray-400 text-[10px]">Instagram</div>
+                    <div class="text-white font-bold mt-1">@siamatcuyy</div>
+                </a>
+
+                <div class="glass-panel p-5 rounded-2xl border border-white/10 hover:border-gold transition-all">
+                    <i class="fas fa-map-marker-alt text-2xl text-gold mb-2"></i>
+                    <div class="text-gray-400 text-[10px]">Lokasi Domisili</div>
+                    <div class="text-white font-bold mt-1">Purbalingga, Jawa Tengah</div>
+                </div>
+            </div>
+
+            <div class="pt-8 text-gray-500 font-mono text-xs">
+                © 2026 Ahmad Dafanda Abdullah. All rights reserved.
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT LOGIC INTERAKTIF -->
+    <script>
+        // --- 0. SCROLL REVEAL ANIMATIONS ---
+        const scrollRevealTargets = document.querySelectorAll([
+            '#cli-terminal > div > *',
+            '#iot-spirometry > div > *, #iot-spirometry .grid > *',
+            '#publications > div > *, #publications .grid > *',
+            '#timeline-section > div > *, #timeline-section .timeline-item',
+            '#journey-navigator > div > *, #journey-navigator .grid > *',
+            '#skills-section > div > *, #skills-section .grid > *',
+            '#contact > div > *, #contact .grid > *'
+        ].join(','));
+
+        if (scrollRevealTargets.length && 'IntersectionObserver' in window &&
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const revealOrderByParent = new WeakMap();
+
+            scrollRevealTargets.forEach(target => {
+                const parent = target.parentElement;
+                const order = revealOrderByParent.get(parent) || 0;
+                target.style.setProperty('--scroll-reveal-order', order);
+                revealOrderByParent.set(parent, order + 1);
+                target.classList.add('scroll-reveal');
+            });
+
+            document.documentElement.classList.add('has-scroll-reveal');
+
+            const scrollRevealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    entry.target.classList.toggle('is-visible', entry.isIntersecting);
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            scrollRevealTargets.forEach(target => scrollRevealObserver.observe(target));
+        }
+
+        // --- 1. SPLIT-SCREEN DRAGGABLE HERO SLIDER LOGIC ---
+        const splitContainer = document.getElementById('hero-split-container');
+        const divider = document.getElementById('split-divider');
+        const handle = document.getElementById('divider-handle');
+        const pctTech = document.getElementById('pct-tech');
+        const pctLeader = document.getElementById('pct-leadership');
+        const barTech = document.getElementById('bar-tech');
+        const barLeader = document.getElementById('bar-leadership');
+
+        let isDragging = false;
+
+        function updateSplit(x) {
+            const rect = splitContainer.getBoundingClientRect();
+            let percentage = ((x - rect.left) / rect.width) * 100;
+            percentage = Math.max(0, Math.min(100, percentage));
+            
+            document.documentElement.style.setProperty('--split', `${percentage}%`);
+            
+            const techVal = Math.round(percentage);
+            const leaderVal = 100 - techVal;
+
+            pctTech.textContent = `${techVal}%`;
+            pctLeader.textContent = `${leaderVal}%`;
+            barTech.style.width = `${techVal}%`;
+            barLeader.style.width = `${leaderVal}%`;
+        }
+
+        function setSplitPercent(pct) {
+            document.documentElement.style.setProperty('--split', `${pct}%`);
+            pctTech.textContent = `${pct}%`;
+            pctLeader.textContent = `${100 - pct}%`;
+            barTech.style.width = `${pct}%`;
+            barLeader.style.width = `${100 - pct}%`;
+        }
+
+        handle.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            e.preventDefault();
+        });
+
+        window.addEventListener('mouseup', () => isDragging = false);
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                updateSplit(e.clientX);
+            }
+        });
+
+        // Mobile touch support for slider
+        handle.addEventListener('touchstart', () => isDragging = true);
+        window.addEventListener('touchend', () => isDragging = false);
+        window.addEventListener('touchmove', (e) => {
+            if (isDragging && e.touches.length > 0) {
+                updateSplit(e.touches[0].clientX);
+            }
+        });
+
+        // --- 2. DEVELOPER CLI TERMINAL LOGIC ---
+        const terminalLogs = document.getElementById('terminal-logs');
+        const terminalForm = document.getElementById('terminal-form');
+        const terminalInput = document.getElementById('terminal-input');
+
+        const siteSections = {
+            'home': { id: 'hero-split-container', label: 'Beranda / Digital Architect & Legislative Leader' },
+            'beranda': { id: 'hero-split-container', label: 'Beranda / Digital Architect & Legislative Leader' },
+            'academic': { id: 'hero-split-container', label: 'Digital Architect', split: 100 },
+            'tech': { id: 'hero-split-container', label: 'Digital Architect', split: 100 },
+            'leadership': { id: 'hero-split-container', label: 'Legislative Leader', split: 0 },
+            'terminal': { id: 'cli-terminal', label: 'Developer Console CLI' },
+            'console': { id: 'cli-terminal', label: 'Developer Console CLI' },
+            'iot': { id: 'iot-spirometry', label: 'Proyek Smart Spirometry IoT' },
+            'spirometry': { id: 'iot-spirometry', label: 'Proyek Smart Spirometry IoT' },
+            'publications': { id: 'publications', label: 'Publikasi Jurnal Ilmiah' },
+            'publikasi': { id: 'publications', label: 'Publikasi Jurnal Ilmiah' },
+            'jurnal': { id: 'publications', label: 'Publikasi Jurnal Ilmiah' },
+            'research': { id: 'publications', label: 'Publikasi Jurnal Ilmiah' },
+            'experience': { id: 'timeline-section', label: 'Pengalaman & Organisasi' },
+            'pengalaman': { id: 'timeline-section', label: 'Pengalaman & Organisasi' },
+            'organisasi': { id: 'timeline-section', label: 'Pengalaman & Organisasi' },
+            'journey': { id: 'journey-navigator', label: 'Jelajahi Rekam Jejak' },
+            'perjalanan': { id: 'journey-navigator', label: 'Jelajahi Rekam Jejak' },
+            'skills': { id: 'skills-section', label: 'Keahlian & Kompetensi' },
+            'keahlian': { id: 'skills-section', label: 'Keahlian & Kompetensi' },
+            'contact': { id: 'contact', label: 'Kontak & Kolaborasi' },
+            'kontak': { id: 'contact', label: 'Kontak & Kolaborasi' }
+        };
+
+        const commands = {
+            'help': 'Commands: <span class="text-cyber">explore</span>, <span class="text-cyber">go/open/visit &lt;section&gt;</span>, <span class="text-cyber">cat cv.json</span>, <span class="text-cyber">academic</span>, <span class="text-gold">leadership</span>, <span class="text-gold">journals</span>, <span class="text-neonGreen">spirometry</span>, <span class="text-white">skills</span>, <span class="text-waGreen">contact</span>, <span class="text-red-400">clear</span><br>Sections: <span class="text-gray-400">home, academic, leadership, terminal, iot, publications, experience, journey, skills, contact</span>',
+            'explore': '<span class="text-cyber font-bold">WEBSITE MAP</span><br><span class="text-gray-400">home</span> — Beranda &amp; slider profil<br><span class="text-gray-400">academic</span> — Tampilan Digital Architect penuh<br><span class="text-gray-400">leadership</span> — Tampilan Legislative Leader penuh<br><span class="text-gray-400">terminal</span> — Developer Console CLI<br><span class="text-gray-400">iot</span> — Smart Spirometry<br><span class="text-gray-400">publications</span> — Publikasi jurnal<br><span class="text-gray-400">experience</span> — Pengalaman &amp; organisasi<br><span class="text-gray-400">journey</span> — Navigator rekam jejak<br><span class="text-gray-400">skills</span> — Keahlian &amp; kompetensi<br><span class="text-gray-400">contact</span> — Kontak &amp; kolaborasi<br><br>Ketik <span class="text-cyber font-bold">go &lt;section&gt;</span> untuk membuka bagian, contoh: <span class="text-white">go iot</span>.',
+            'cat cv.json': `<pre class="text-cyber text-[11px] font-mono leading-tight">
+{
+  "name": "Ahmad Dafanda Abdullah",
+  "education": "S1 Teknologi Informasi - Universitas Amikom Purwokerto",
+  "current_role": "Ketua Umum Senat Mahasiswa 2026",
+  "focus": ["Web Engineering", "Low-Budget Medical IoT", "Public Speaking"],
+  "contacts": { "email": "adnafaddamha@gmail.com", "phone": "+62 895-4116-9504" }
+}</pre>`,
+            'academic': '🎓 S1 TI Universitas Amikom Purwokerto | Creator Smart Spirometry | Penulis artikel Aksi Kolektif & IJOMSS',
+            'leadership': '👑 Ketua Umum Senat Mahasiswa 2026 | Chief Field Coordinator TECH4FEST 2026 | Ketua Pelaksana FIK Got Talent 2025',
+            'journals': '📜 Peningkatan Literasi IoT Melalui Simulasi Wokwi (Aksi Kolektif, 2025) & Sistem Pelaporan Kerusakan Fasilitas Kampus (IJOMSS, 2026). Ketik go publications untuk melihat detail.',
+            'spirometry': '🫁 Smart Spirometry: Low-budget medical device using modified waterflow sensor. Demo: ungu.in/smartspirometry',
+            'skills': '⚙️ Leadership, Web Development, Waterflow Telemetry, Public Relations, Strategic Problem Solving',
+            'contact': '📲 WhatsApp: +62 895-4116-9504 | Email: adnafaddamha@gmail.com'
+        };
+        commands.academic = 'Universitas Amikom Purwokerto';
+
+        function executeCommand(cmd) {
+            cmd = cmd.trim().toLowerCase();
+            const logEntry = document.createElement('div');
+            
+            if (cmd === 'clear') {
+                terminalLogs.innerHTML = `<div class="text-cyber font-bold">=== TERMINAL CLEARED ===</div>`;
+                return;
+            }
+
+            const promptLabel = document.createElement('span');
+            promptLabel.className = 'text-neonGreen font-bold';
+            promptLabel.textContent = 'dafanda@admin:~$';
+            const commandText = document.createElement('span');
+            commandText.className = 'text-white';
+            commandText.textContent = ` ${cmd}`;
+            logEntry.append(promptLabel, commandText);
+            terminalLogs.appendChild(logEntry);
+
+            const responseEntry = document.createElement('div');
+            responseEntry.className = 'pl-3 border-l-2 border-cyber/50 my-1 text-gray-300';
+
+            const navigationMatch = cmd.match(/^(?:go|open|visit)\s+(.+)$/);
+            if (Object.hasOwn(commands, cmd)) {
+                responseEntry.innerHTML = commands[cmd];
+            } else if (navigationMatch) {
+                const destinationName = navigationMatch[1];
+                const destination = Object.hasOwn(siteSections, destinationName) ? siteSections[destinationName] : null;
+                if (destination) {
+                    const section = document.getElementById(destination.id);
+                    if (section) {
+                        responseEntry.innerHTML = `<span class="text-cyber">Navigating to:</span> ${destination.label}`;
+                        if (destination.split !== undefined) {
+                            setSplitPercent(destination.split);
+                        }
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        responseEntry.textContent = `Section unavailable: "${destinationName}".`;
+                    }
+                } else {
+                    responseEntry.textContent = `Section not found: "${destinationName}". Type "explore" to see available sections.`;
+                }
+            } else {
+                responseEntry.textContent = `Command not found: "${cmd}". Type "help" for available options.`;
+                responseEntry.classList.add('text-red-400');
+            }
+
+            terminalLogs.appendChild(responseEntry);
+            terminalLogs.scrollTop = terminalLogs.scrollHeight;
+        }
+
+        terminalForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const val = terminalInput.value;
+            if (val) {
+                executeCommand(val);
+                terminalInput.value = '';
+            }
+        });
+
+        // --- 4. IOT SPIROMETRY CANVAS TELEMETRY ---
+        const canvas = document.getElementById('spirometryCanvas');
+        const ctx = canvas ? canvas.getContext('2d') : null;
+
+        let flowRate = 0;
+        let volume = 0;
+        let pefr = 0;
+        let fev1 = 0;
+        let points = new Array(100).fill(0);
+        let volumePoints = new Array(100).fill(0);
+        let exhaleActive = false;
+        let exhaleTime = 0;
+        let graphMode = 'flow';
+        let graphPaused = false;
+        let graphPointerX = null;
+        const chart = document.getElementById('spirometryChart');
+        const tooltip = document.getElementById('spirometryTooltip');
+
+        function setGraphMode(mode) {
+            graphMode = mode;
+            const flowButton = document.getElementById('graph-flow-btn');
+            const volumeButton = document.getElementById('graph-volume-btn');
+
+            flowButton.classList.toggle('bg-cyber', mode === 'flow');
+            flowButton.classList.toggle('text-black', mode === 'flow');
+            flowButton.classList.toggle('font-bold', mode === 'flow');
+            volumeButton.classList.toggle('bg-cyber', mode === 'volume');
+            volumeButton.classList.toggle('text-black', mode === 'volume');
+            volumeButton.classList.toggle('font-bold', mode === 'volume');
+            flowButton.classList.toggle('text-gray-400', mode !== 'flow');
+            volumeButton.classList.toggle('text-gray-400', mode !== 'volume');
+            flowButton.setAttribute('aria-pressed', String(mode === 'flow'));
+            volumeButton.setAttribute('aria-pressed', String(mode === 'volume'));
+        }
+
+        function toggleGraphPause() {
+            graphPaused = !graphPaused;
+            const pauseButton = document.getElementById('graph-pause-btn');
+            const liveDot = document.getElementById('graph-live-dot');
+            const liveLabel = document.getElementById('graph-live-label');
+            pauseButton.innerHTML = graphPaused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+            pauseButton.setAttribute('aria-label', graphPaused ? 'Lanjutkan grafik' : 'Pause grafik');
+            liveDot.classList.toggle('hidden', graphPaused);
+            liveDot.classList.toggle('animate-ping', !graphPaused);
+            liveLabel.textContent = graphPaused ? 'PAUSED' : 'LIVE PULSE';
+            liveLabel.parentElement.classList.toggle('text-neonGreen', !graphPaused);
+            liveLabel.parentElement.classList.toggle('text-gold', graphPaused);
+        }
+
+        function resizeCanvas() {
+            if (canvas) {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function triggerExhale() {
+            exhaleActive = true;
+            exhaleTime = 0;
+            pefr = (Math.random() * 2 + 6.5).toFixed(1);
+            fev1 = (Math.random() * 0.5 + 3.2).toFixed(2);
+        }
+
+        function triggerResting() {
+            exhaleActive = false;
+            flowRate = 0.5;
+        }
+
+        function resetTelemetry() {
+            exhaleActive = false;
+            flowRate = 0;
+            volume = 0;
+            pefr = 0;
+            fev1 = 0;
+            points.fill(0);
+            volumePoints.fill(0);
+            updateCounters();
+        }
+
+        function updateCounters() {
+            document.getElementById('flow-rate-val').innerHTML = `${flowRate.toFixed(1)} <span class="text-xs font-normal">L/s</span>`;
+            document.getElementById('volume-val').innerHTML = `${volume.toFixed(2)} <span class="text-xs font-normal">L</span>`;
+            document.getElementById('pefr-val').innerHTML = `${pefr} <span class="text-xs font-normal">L/m</span>`;
+            document.getElementById('fev1-val').innerHTML = `${fev1} <span class="text-xs font-normal">L</span>`;
+        }
+
+        if (chart && canvas) {
+            chart.addEventListener('pointermove', (event) => {
+                const bounds = canvas.getBoundingClientRect();
+                graphPointerX = Math.max(0, Math.min(canvas.width, event.clientX - bounds.left));
+                tooltip.classList.remove('hidden');
+            });
+            chart.addEventListener('pointerleave', () => {
+                graphPointerX = null;
+                tooltip.classList.add('hidden');
+            });
+        }
+
+        function drawGraph() {
+            if (!ctx || !canvas) return;
+
+            if (!graphPaused) {
+                if (exhaleActive) {
+                    exhaleTime += 0.08;
+                    flowRate = Math.max(0, Math.sin(exhaleTime) * 6 * Math.exp(-exhaleTime * 0.4));
+                    volume += (flowRate * 0.02);
+                    if (exhaleTime > 4) exhaleActive = false;
+                } else if (flowRate > 0) {
+                    flowRate = 0.4 + Math.sin(Date.now() * 0.003) * 0.2;
+                }
+
+                points.push(flowRate);
+                points.shift();
+                volumePoints.push(volume);
+                volumePoints.shift();
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw grid lines
+            ctx.strokeStyle = 'rgba(0, 229, 255, 0.1)';
+            ctx.lineWidth = 1;
+            for (let x = 0; x < canvas.width; x += 30) {
+                ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+            }
+            for (let y = 0; y < canvas.height; y += 30) {
+                ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+            }
+
+            const samples = graphMode === 'flow' ? points : volumePoints;
+            const peak = Math.max(...samples, graphMode === 'flow' ? 8 : 1);
+            const scale = graphMode === 'flow' ? 8 : peak * 1.15;
+            const lineColor = graphMode === 'flow' ? '#00E5FF' : '#39FF14';
+            const step = canvas.width / (samples.length - 1);
+            const yForValue = (value) => canvas.height - 18 - (value / scale) * (canvas.height - 36);
+
+            // Draw a translucent area beneath the signal.
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height - 18);
+            samples.forEach((sample, index) => ctx.lineTo(index * step, yForValue(sample)));
+            ctx.lineTo(canvas.width, canvas.height - 18);
+            ctx.closePath();
+            const fill = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            fill.addColorStop(0, graphMode === 'flow' ? 'rgba(0, 229, 255, 0.22)' : 'rgba(57, 255, 20, 0.2)');
+            fill.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = fill;
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 3;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = lineColor;
+            samples.forEach((sample, index) => {
+                const x = index * step;
+                const y = yForValue(sample);
+                if (index === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            if (graphPointerX !== null) {
+                const sampleIndex = Math.min(samples.length - 1, Math.round(graphPointerX / step));
+                const sampleValue = samples[sampleIndex];
+                const pointX = sampleIndex * step;
+                const pointY = yForValue(sampleValue);
+                ctx.beginPath();
+                ctx.setLineDash([4, 4]);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+                ctx.lineWidth = 1;
+                ctx.moveTo(pointX, 0);
+                ctx.lineTo(pointX, canvas.height);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.beginPath();
+                ctx.arc(pointX, pointY, 5, 0, Math.PI * 2);
+                ctx.fillStyle = lineColor;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = lineColor;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                document.getElementById('spirometryTooltip-time').textContent = `SAMPLE ${sampleIndex + 1}`;
+                document.getElementById('spirometryTooltip-value').textContent = graphMode === 'flow'
+                    ? `${sampleValue.toFixed(1)} L/s`
+                    : `${sampleValue.toFixed(2)} L`;
+                tooltip.style.left = `${Math.min(Math.max(pointX + 12, 8), canvas.clientWidth - 125)}px`;
+                tooltip.style.top = `${Math.max(pointY - 48, 8)}px`;
+            }
+
+            updateCounters();
+            requestAnimationFrame(drawGraph);
+        }
+        drawGraph();
+
+        // --- 5. TIMELINE FILTER LOGIC ---
+        function filterTimeline(category) {
+            const items = document.querySelectorAll('.timeline-item');
+            const btnAll = document.getElementById('btn-tl-all');
+            const btnTech = document.getElementById('btn-tl-tech');
+            const btnLeader = document.getElementById('btn-tl-leadership');
+
+            // Reset button styles
+            [btnAll, btnTech, btnLeader].forEach(btn => {
+                btn.className = "px-4 py-2 rounded-lg text-gray-400 hover:text-white transition-all";
+            });
+
+            if (category === 'all') btnAll.className = "px-4 py-2 rounded-lg bg-cyber text-black font-bold transition-all";
+            if (category === 'tech') btnTech.className = "px-4 py-2 rounded-lg bg-cyber text-black font-bold transition-all";
+            if (category === 'leadership') btnLeader.className = "px-4 py-2 rounded-lg bg-gold text-black font-bold transition-all";
+
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // --- 6. INTERACTIVE JOURNEY NAVIGATOR ---
+        const journeyData = {
+            senat: {
+                year: '2025–2026',
+                status: 'LEADERSHIP PATH',
+                title: 'Senat Mahasiswa',
+                description: 'Perjalanan di Senat Mahasiswa dimulai pada 2025 sebagai Legislatif Muda di Komisi B, bertugas mengawal fungsi legislasi dan menyerap aspirasi mahasiswa secara langsung. Pengalaman ini menjadi pijakan kuat hingga dipercaya mengemban amanah sebagai Ketua Umum Senat Mahasiswa 2026.',
+                tags: ['Legislatif Muda', 'Ketua Umum'],
+                progress: '100%',
+                next: 'NEXT: 2026',
+                tone: 'gold'
+            },
+            event: {
+                year: '2025–2026',
+                status: 'EVENT OPERATIONS',
+                title: 'Event Kampus',
+                description: 'Rekam jejak eksekusi acara dari skala Prodi, Fakultas hingga Universitas yang berfokus pada manajemen kepemimpinan, penjaminan transparansi pesta demokrasi kampus, serta efektivitas operasional lapangan.',
+                tags: ['Ketua Pelaksana', 'Wakil Ketua Expo', 'Sekretaris Panitia Pengawas', 'Chief Field Coordinator'],
+                progress: '82%',
+                next: 'TRACK: EVENT',
+                tone: 'cyber'
+            },
+            hmps: {
+                year: '2024–2025',
+                status: 'PUBLIC RELATIONS',
+                title: 'HMPS Teknologi Informasi',
+                description: 'Menjalankan peran sebagai Kepala Departemen Public Relation, dengan tanggung jawab pada beberapa kepanitiaan diantaranya Serutek 2025, Technofest 2025, dan Connextion 2025.',
+                tags: ['Kepala Departemen Public Relation'],
+                progress: '58%',
+                next: 'FOUNDATION: HMPS TI',
+                tone: 'cyber'
+            }
+        };
+
+        function exploreJourney(key, selectedButton) {
+            const journey = journeyData[key];
+            if (!journey) return;
+
+            const isGold = journey.tone === 'gold';
+            document.getElementById('journey-year').textContent = journey.year;
+            document.getElementById('journey-year').className = `px-3 py-1 rounded-full ${isGold ? 'bg-gold/15 text-gold border-gold/30' : 'bg-cyber/15 text-cyber border-cyber/30'} border text-xs font-mono font-bold`;
+            document.getElementById('journey-status').textContent = journey.status;
+            document.getElementById('journey-status').className = `text-[10px] font-mono tracking-widest ${isGold ? 'text-neonGreen' : 'text-cyber'}`;
+            document.getElementById('journey-title').textContent = journey.title;
+            document.getElementById('journey-description').textContent = journey.description;
+            document.getElementById('journey-tags').innerHTML = journey.tags.map(tag => `<span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-xs text-gray-300">${tag}</span>`).join('');
+            document.getElementById('journey-progress').style.width = journey.progress;
+            document.getElementById('journey-progress').className = `h-full transition-all duration-500 ${isGold ? 'bg-gradient-to-r from-gold to-yellow-300' : 'bg-gradient-to-r from-cyber to-teal-400'}`;
+            document.getElementById('journey-progress-label').textContent = journey.next;
+            document.getElementById('journey-progress-label').className = `font-mono text-xs whitespace-nowrap ${isGold ? 'text-gold' : 'text-cyber'}`;
+
+            document.querySelectorAll('.journey-tab').forEach(button => {
+                button.classList.remove('border-gold/50', 'bg-gold/10', 'border-cyber/50', 'bg-cyber/10');
+                button.classList.add('border-white/10', 'bg-white/[0.03]', 'hover:border-cyber/50', 'transition-colors');
+                button.setAttribute('aria-selected', 'false');
+            });
+            selectedButton.classList.remove('border-white/10', 'bg-white/[0.03]', 'hover:border-cyber/50');
+            selectedButton.classList.add('transition-colors', ...(isGold ? ['border-gold/50', 'bg-gold/10'] : ['border-cyber/50', 'bg-cyber/10']));
+            selectedButton.setAttribute('aria-selected', 'true');
+        }
+
+        // --- 7. UTILITIES ---
+        function copyCitation(text) {
+            navigator.clipboard.writeText(text);
+            alert('Sitasi berhasil disalin ke clipboard!');
+        }
+    </script>
+</body>
+</html>
