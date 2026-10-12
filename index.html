@@ -430,11 +430,62 @@
             display: flex;
             height: 100%;
             flex-direction: column;
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
         }
 
         #publications .publication-card-header {
-            height: 2.75rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 2.5rem;
             align-items: center;
+            gap: 0.65rem;
+            min-height: 3.5rem;
+            width: 100%;
+        }
+
+        #publications .publication-journal-badge {
+            display: flex;
+            min-width: 0;
+            align-items: center;
+            justify-content: center;
+            min-height: 3.1rem;
+            width: 100%;
+            padding: 0.55rem 0.85rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(92, 40, 27, 0.9);
+            background: rgba(233, 221, 203, 0.96);
+            color: #5f1b14;
+            font-size: clamp(0.65rem, 1vw, 0.9rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: 0;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        #publications .publication-link-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(92, 40, 27, 0.9);
+            background: rgba(233, 221, 203, 0.96);
+            color: #5f1b14;
+            transition: transform 180ms ease, background-color 180ms ease;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        #publications .publication-link-button:hover {
+            background: rgba(242, 232, 219, 0.98);
+            transform: translateY(-1px);
         }
 
         #publications .publication-card-title {
@@ -1344,6 +1395,82 @@
             border-color: rgba(123, 0, 5, 0.18);
             box-shadow: 0 18px 42px rgba(65, 14, 18, 0.08);
         }
+
+        @keyframes hero-copy-enter {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes hero-photo-enter {
+            from { opacity: 0; transform: translateY(18px) scale(0.985); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes hero-ring-drift {
+            from { transform: rotate(0deg) scale(1); }
+            to { transform: rotate(9deg) scale(1.025); }
+        }
+        @keyframes timeline-node-glow {
+            0%, 100% { box-shadow: 0 0 0 4px rgba(123, 0, 5, 0.06); }
+            50% { box-shadow: 0 0 0 8px rgba(123, 0, 5, 0.025); }
+        }
+        @keyframes action-sheen {
+            from { background-position: 150% 0; }
+            to { background-position: -50% 0; }
+        }
+        @keyframes selected-tab-breathe {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(123, 0, 5, 0); }
+            50% { box-shadow: 0 0 9px 1px rgba(123, 0, 5, 0.18); }
+        }
+        #hero-split-container .hero-copy-flow > * {
+            opacity: 0;
+            animation: hero-copy-enter 650ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+        }
+        #hero-split-container .hero-copy-flow > *:nth-child(1) { animation-delay: 80ms; }
+        #hero-split-container .hero-copy-flow > *:nth-child(2) { animation-delay: 170ms; }
+        #hero-split-container .hero-copy-flow > *:nth-child(3) { animation-delay: 260ms; }
+        #hero-split-container .hero-copy-flow > *:nth-child(4) { animation-delay: 350ms; }
+        #hero-split-container .hero-copy-flow > *:nth-child(5) { animation-delay: 440ms; }
+        #hero-split-container .stage-photo-img {
+            animation: hero-photo-enter 900ms 180ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+        }
+        #hero-split-container .panel-tech::after,
+        #hero-split-container .panel-leadership::after {
+            animation: hero-ring-drift 9s ease-in-out infinite alternate;
+            transform-origin: center;
+        }
+        #timeline-section .timeline-item > div:first-child {
+            animation: timeline-node-glow 3s ease-in-out infinite;
+        }
+        #timeline-section .timeline-item:nth-child(even) > div:first-child {
+            animation-delay: 1.5s;
+        }
+        #hero-split-container .hero-copy-flow > .grid > a,
+        #site-nav .nav-action,
+        #contact a,
+        #cli-terminal .quick-command-list > button {
+            background-image: linear-gradient(
+                110deg,
+                transparent 25%,
+                rgba(255, 255, 255, 0.28) 48%,
+                transparent 68%
+            );
+            background-size: 250% 100%;
+            background-position: 150% 0;
+        }
+        #hero-split-container .hero-copy-flow > .grid > a:hover,
+        #site-nav .nav-action:hover,
+        #contact a:hover,
+        #cli-terminal .quick-command-list > button:hover {
+            animation: action-sheen 750ms ease-out;
+        }
+        #contact a > i {
+            transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+        #contact a:hover > i {
+            transform: translateY(-4px) rotate(-5deg) scale(1.12);
+        }
+        #journey-navigator .journey-tab[aria-selected="true"]::before {
+            animation: selected-tab-breathe 2.4s ease-in-out infinite;
+        }
         @media (max-width: 767px) {
             section.bg-dark h2,
             section.bg-darker h2 {
@@ -1353,8 +1480,26 @@
         @media (prefers-reduced-motion: reduce) {
             #publications .publication-card,
             #timeline-section .timeline-card,
-            #skills-section .glass-panel {
+            #skills-section .glass-panel,
+            #hero-split-container .hero-copy-flow > *,
+            #hero-split-container .stage-photo-img,
+            #hero-split-container .panel-tech::after,
+            #hero-split-container .panel-leadership::after,
+            #timeline-section .timeline-item > div:first-child,
+            #hero-split-container .hero-copy-flow > .grid > a,
+            #site-nav .nav-action,
+            #contact a,
+            #journey-navigator .journey-tab[aria-selected="true"]::before,
+            #cli-terminal .quick-command-list > button {
                 transition: none;
+                animation: none;
+                opacity: 1;
+            }
+            #hero-split-container .hero-copy-flow > .grid > a:hover,
+            #site-nav .nav-action:hover,
+            #contact a:hover,
+            #cli-terminal .quick-command-list > button:hover {
+                animation: none !important;
             }
         }
     </style>
@@ -1741,12 +1886,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 <!-- Journal 1: Aksi Kolektif -->
-                <div class="publication-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-gold/50 transition-all space-y-4 relative group">
-                    <div class="publication-card-header flex justify-between items-start">
-                        <span class="px-3 py-1 rounded-md bg-gold/20 text-gold text-xs font-mono font-bold border border-gold/40">
+                <div class="publication-card space-y-4 relative group">
+                    <div class="publication-card-header">
+                        <span class="publication-journal-badge font-display" title="Aksi Kolektif: Jurnal Pengabdian">
                             Aksi Kolektif: Jurnal Pengabdian
                         </span>
-                        <a href="https://glonus.org/index.php/aksikolektif/article/view/331" target="_blank" rel="noopener noreferrer" aria-label="Buka artikel di Aksi Kolektif">
+                        <a class="publication-link-button" href="https://glonus.org/index.php/aksikolektif/article/view/331" target="_blank" rel="noopener noreferrer" aria-label="Buka artikel di Aksi Kolektif">
                             <i class="fas fa-external-link-alt text-sm"></i>
                         </a>
                     </div>
@@ -1776,12 +1921,12 @@
                 </div>
 
                 <!-- Journal 2: Indonesian Journal of Multidisciplinary Scientific Studies -->
-                <div class="publication-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-cyber/50 transition-all space-y-4 relative group">
-                    <div class="publication-card-header flex justify-between items-start">
-                        <span class="px-3 py-1 rounded-md bg-cyber/20 text-cyber text-xs font-mono font-bold border border-cyber/40">
+                <div class="publication-card space-y-4 relative group">
+                    <div class="publication-card-header">
+                        <span class="publication-journal-badge font-display" title="Indonesian Journal of Multidisciplinary Scientific Studies">
                             Indonesian Journal of Multidisciplinary Scientific Studies
                         </span>
-                        <a href="https://ojs.staira.ac.id/index.php/IJOMSS/article/view/959" target="_blank" rel="noopener noreferrer" aria-label="Buka artikel di Indonesian Journal of Multidisciplinary Scientific Studies">
+                        <a class="publication-link-button" href="https://ojs.staira.ac.id/index.php/IJOMSS/article/view/959" target="_blank" rel="noopener noreferrer" aria-label="Buka artikel di Indonesian Journal of Multidisciplinary Scientific Studies">
                             <i class="fas fa-external-link-alt text-sm"></i>
                         </a>
                     </div>
